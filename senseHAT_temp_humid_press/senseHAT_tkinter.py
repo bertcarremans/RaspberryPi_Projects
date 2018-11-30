@@ -1,3 +1,5 @@
+# Source: 20 Easy Raspberry Pi Projects - Rui Santos & Sara Santos - No Starch Press
+
 from sense_hat import SenseHat
 from tkinter import *
 from tkinter import ttk
@@ -41,10 +43,10 @@ p_value = Label(window, textvariable = pressure, font=('Courier', 20), fg='green
 p_value.pack()
 
 def update_readings():
-    humidity.set(h)
+    humidity.set(str(h) + ' %')
     h_bar.set(h)
-    temperature.set(t)
-    pressure.set(p)
+    temperature.set(str(t) + ' C')
+    pressure.set(str(p) + ' hPa')
     window.update_idletasks()
     window.after(3000, update_readings)
     
