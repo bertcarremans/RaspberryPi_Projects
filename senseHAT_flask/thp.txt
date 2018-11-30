@@ -1,0 +1,1 @@
+Fri Nov 30 13:37:04 2018 Temperature: 34.72 -- Humidity: 28.39 -- Pressure: 1010.23
