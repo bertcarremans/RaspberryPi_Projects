@@ -3,3 +3,4 @@ SENSOR/email_config.py
 *.jpg
 SENSOR/__pycache__*
 *.h264
+Libraries/

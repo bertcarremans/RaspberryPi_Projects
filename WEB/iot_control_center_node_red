@@ -1,0 +1,321 @@
+[
+    {
+        "id": "5fea104.6910ef",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "51092053.52c52",
+        "type": "inject",
+        "z": "5fea104.6910ef",
+        "name": "On at 17:35",
+        "topic": "",
+        "payload": "1",
+        "payloadType": "num",
+        "repeat": "",
+        "crontab": "35 17 * * *",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 140,
+        "y": 80,
+        "wires": [
+            [
+                "c85d325f.197e"
+            ]
+        ]
+    },
+    {
+        "id": "47b9073d.ef97e8",
+        "type": "inject",
+        "z": "5fea104.6910ef",
+        "name": "Out at 17:38",
+        "topic": "",
+        "payload": "0",
+        "payloadType": "num",
+        "repeat": "",
+        "crontab": "38 17 * * *",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 140,
+        "y": 140,
+        "wires": [
+            [
+                "c85d325f.197e"
+            ]
+        ]
+    },
+    {
+        "id": "a4d4f599.4a9f08",
+        "type": "ui_switch",
+        "z": "5fea104.6910ef",
+        "name": "LED 1 - Switch",
+        "label": "LED 1",
+        "tooltip": "",
+        "group": "12c432e3.55240d",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "",
+        "style": "",
+        "onvalue": "1",
+        "onvalueType": "num",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "0",
+        "offvalueType": "num",
+        "officon": "",
+        "offcolor": "",
+        "x": 130,
+        "y": 220,
+        "wires": [
+            [
+                "c85d325f.197e",
+                "b29f1f60.e5e73"
+            ]
+        ]
+    },
+    {
+        "id": "c85d325f.197e",
+        "type": "rpi-gpio out",
+        "z": "5fea104.6910ef",
+        "name": "LED 1 - GPIO 17",
+        "pin": "11",
+        "set": "",
+        "level": "0",
+        "freq": "",
+        "out": "out",
+        "x": 360,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "b29f1f60.e5e73",
+        "type": "debug",
+        "z": "5fea104.6910ef",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 400,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "a77f690c.5dccf8",
+        "type": "ui_slider",
+        "z": "5fea104.6910ef",
+        "name": "LED 2 - Slider",
+        "label": "LED 2",
+        "tooltip": "",
+        "group": "12c432e3.55240d",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "all",
+        "topic": "",
+        "min": 0,
+        "max": "100",
+        "step": 1,
+        "x": 150,
+        "y": 380,
+        "wires": [
+            [
+                "a02c807a.c30de"
+            ]
+        ]
+    },
+    {
+        "id": "a02c807a.c30de",
+        "type": "rpi-gpio out",
+        "z": "5fea104.6910ef",
+        "name": "LED 2 - GPIO 18",
+        "pin": "12",
+        "set": "",
+        "level": "0",
+        "freq": "",
+        "out": "pwm",
+        "x": 380,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "f3a7d258.f4772",
+        "type": "inject",
+        "z": "5fea104.6910ef",
+        "name": "Read DHT22",
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "repeat": "20",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 140,
+        "y": 540,
+        "wires": [
+            [
+                "a5ae98b6.fd6348"
+            ]
+        ]
+    },
+    {
+        "id": "a5ae98b6.fd6348",
+        "type": "rpi-dht22",
+        "z": "5fea104.6910ef",
+        "name": "DHT22 - GPIO 4",
+        "topic": "rpi-dht22",
+        "dht": 22,
+        "pintype": "0",
+        "pin": 4,
+        "x": 350,
+        "y": 540,
+        "wires": [
+            [
+                "db4e3608.a8ecc8",
+                "5db4f940.ff9b18",
+                "4288e523.0f294c"
+            ]
+        ]
+    },
+    {
+        "id": "db4e3608.a8ecc8",
+        "type": "ui_chart",
+        "z": "5fea104.6910ef",
+        "name": "Temperature - Chart",
+        "group": "12c432e3.55240d",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "label": "Temperature",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "x": 610,
+        "y": 540,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "5db4f940.ff9b18",
+        "type": "function",
+        "z": "5fea104.6910ef",
+        "name": "Get humidity",
+        "func": "msg.payload = msg.humidity\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 490,
+        "y": 620,
+        "wires": [
+            [
+                "69b46ff9.abb04",
+                "6117275a.a009e8"
+            ]
+        ]
+    },
+    {
+        "id": "69b46ff9.abb04",
+        "type": "ui_gauge",
+        "z": "5fea104.6910ef",
+        "name": "Humidity - Gauge",
+        "group": "12c432e3.55240d",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Humidity",
+        "label": "%",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 680,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "4288e523.0f294c",
+        "type": "debug",
+        "z": "5fea104.6910ef",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 540,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "6117275a.a009e8",
+        "type": "debug",
+        "z": "5fea104.6910ef",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 640,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "12c432e3.55240d",
+        "type": "ui_group",
+        "z": "",
+        "name": "Dashboard",
+        "tab": "af4037a4.d2bfb8",
+        "order": 1,
+        "disp": true,
+        "width": "12",
+        "collapse": false
+    },
+    {
+        "id": "af4037a4.d2bfb8",
+        "type": "ui_tab",
+        "z": "",
+        "name": "Home",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    }
+]
