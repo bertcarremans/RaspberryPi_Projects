@@ -4,3 +4,6 @@ SENSOR/email_config.py
 SENSOR/__pycache__*
 *.h264
 Libraries/
+RasPi_ThingSpeak/config.py
+RasPi_ThingSpeak/config.pyc
+RasPi_ThingSpeak/sensor_readings.txt
