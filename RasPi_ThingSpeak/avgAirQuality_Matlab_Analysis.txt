@@ -1,0 +1,35 @@
+% Read sensor data over the past hour from the AirQuality channel and write 
+% the average to the AvgAirQuality channel. 
+
+% Channel 667186 contains data from a DHT22 sensor on a Raspberry Pi, located 
+% in Hasselt, Belgium. The data is collected once every 15 seconds. 
+
+% Channel ID to read data from 
+readChannelID = 667186;
+% Channel Read API Key 
+readAPIKey = 'KPRZSHVZY7IQPZJO'; 
+
+% Temperature Field ID
+temperatureFieldID = 1;
+% Humidity Field ID 
+humidityFieldID = 2; 
+
+% Read sensor data
+temperature = thingSpeakRead(readChannelID,'Fields',temperatureFieldID,'NumMinutes',60,'ReadKey',readAPIKey); 
+humidity = thingSpeakRead(readChannelID,'Fields',humidityFieldID,'NumMinutes',60,'ReadKey',readAPIKey); 
+
+% Calculate the averages 
+avgTemperature = mean(temperature);
+avgHumidity = mean(humidity); 
+
+% Display the averages in the output window below
+display(avgTemperature,'Average Temperature');
+display(avgHumidity,'Average Humidity'); 
+     
+% Channel ID to write data to 
+writeChannelID = 667632; 
+% Channel Write API Key 
+writeAPIKey = '44A8RE9V01IGCAS5'; 
+
+% Write averages
+thingSpeakWrite(writeChannelID,[avgTemperature,avgHumidity],'writekey',writeAPIKey);
