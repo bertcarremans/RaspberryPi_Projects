@@ -7,3 +7,7 @@ Libraries/
 RasPi_ThingSpeak/config.py
 RasPi_ThingSpeak/config.pyc
 RasPi_ThingSpeak/sensor_readings.txt
+RasPi_Firebase/airquality-b42e1-firebase-adminsdk-6s5om-c7370e92de.json
+RasPi_Firebase/config.py
+RasPi_Firebase/config.pyc
+RasPi_Firebase/sensor_readings.txt
